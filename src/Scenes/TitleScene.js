@@ -1,22 +1,15 @@
 import 'phaser';
 import config from '../Config/config';
 import Button from '../Objects/Button';
+
 export default class TitleScene extends Phaser.Scene {
 	constructor() {
 		super('Title');
 	}
-	preload() {
-		this.load.image('blueButton1', 'assets/ui/blue_button02.png');
-		this.load.image('blueButton2', 'assets/ui/blue_button03.png');
-		this.load.image('phaserLogo', 'assets/logo.png');
-		this.load.image('box', 'assets/ui/grey_box.png');
-		this.load.image('checkedBox', 'assets/ui/blue_boxCheckmark.png');
-		this.load.audio('bgMusic', ['assets/TownTheme.mp3']);
-
-	}
 
 	create() {
 		// Game
+
 		this.gameButton = new Button(this, config.width / 2, config.height / 2 - 100, 'blueButton1', 'blueButton2', 'Play', 'Game');
 
 		// Options
