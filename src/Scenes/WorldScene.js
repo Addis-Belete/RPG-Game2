@@ -1,4 +1,4 @@
-var WorldScene = new Phaser.Class({
+const WorldScene = new Phaser.Class({
 
 	Extends: Phaser.Scene,
 
@@ -11,6 +11,11 @@ var WorldScene = new Phaser.Class({
 
 	},
 	create: function () {
-		// create your world here
+		const map = this.make.tilemap({ key: 'map' });
+		const tiles = map.addTilesetImage('spritesheet', 'tiles');
+
+		const grass = map.createStaticLayer('Grass', tiles, 0, 0);
+		const obstacles = map.createStaticLayer('Obstacles', tiles, 0, 0);
+		obstacles.setCollisionByExclusion([-1]);
 	}
 });
