@@ -1,5 +1,5 @@
 import 'phaser';
-export default class GameScene extends Phaser.Scene {
+export default class WorldScene extends Phaser.Scene {
 	constructor() {
 		super('World');
 	}
@@ -50,9 +50,34 @@ export default class GameScene extends Phaser.Scene {
 			frameRate: 10,
 			repeat: -1
 		});
-
+		this.physics.add.collider(this.player, obstacles);
+		this.spawns = this.physics.add.group({ classType: Phaser.GameObjects.Zone });
+		for (var i = 0; i < 30; i++) {
+			var x = Phaser.Math.RND.between(0, this.physics.world.bounds.width);
+			var y = Phaser.Math.RND.between(0, this.physics.world.bounds.height);
+			// parameters are x, y, width, height
+			this.spawns.create(x, y, 20, 20);
+		}
+		this.physics.add.overlap(this.player, this.spawns, this.onMeetEnemy, false, this);
 	}
 	update(time, delta) {
+		this.player.body.setVelocity(0);
+
+		// Horizontal movement
+		if (this.cursors.left.isDown) {
+			this.player.body.setVelocityX(-80);
+		}
+		else if (this.cursors.right.isDown) {
+			this.player.body.setVelocityX(80);
+		}
+
+		// Vertical movement
+		if (this.cursors.up.isDown) {
+			this.player.body.setVelocityY(-80);
+		}
+		else if (this.cursors.down.isDown) {
+			this.player.body.setVelocityY(80);
+		}
 		if (this.cursors.left.isDown) {
 			this.player.anims.play('left', true);
 		}
@@ -68,5 +93,15 @@ export default class GameScene extends Phaser.Scene {
 		else {
 			this.player.anims.stop();
 		}
+	}
+	onMeetEnemy(player, zone) {
+		// we move the zone to some other location
+		zone.x = Phaser.Math.RND.between(0, this.physics.world.bounds.width);
+		zone.y = Phaser.Math.RND.between(0, this.physics.world.bounds.height);
+
+		// shake the world
+		this.cameras.main.shake(300);
+
+		// start battle 
 	}
 };
