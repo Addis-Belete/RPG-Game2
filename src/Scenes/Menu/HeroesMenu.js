@@ -9,21 +9,20 @@ const HeroesMenu = new Phaser.Class({
 		}
 });
 
-const ActionsMenu = new Phaser.Class({
+let ActionsMenu = new Phaser.Class({
 	Extends: Menu,
 
 	initialize:
 
 		function ActionsMenu(x, y, scene) {
 			Menu.call(this, x, y, scene);
-			this.addMenuItem('Attack');
+			this.addMenuItem("Attack");
 		},
 	confirm: function () {
-		// do something when the player selects an action
+		this.scene.events.emit("SelectEnemies");
 	}
 
 });
-
 const EnemiesMenu = new Phaser.Class({
 	Extends: Menu,
 
@@ -34,6 +33,7 @@ const EnemiesMenu = new Phaser.Class({
 		},
 	confirm: function () {
 		// do something when the player selects an enemy
+		this.scene.events.emit("Enemy", this.menuItemIndex);
 	}
 });
 
