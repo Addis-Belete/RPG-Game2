@@ -102,6 +102,10 @@ export default class WorldScene extends Phaser.Scene {
 		// shake the world
 		this.cameras.main.shake(300);
 
-		// start battle 
+		this.scene.switch('Battle');
+	}
+	exitBattle() {
+		this.scene.sleep('UIScene');
+		this.scene.switch('WorldScene');
 	}
 };

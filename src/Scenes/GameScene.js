@@ -8,6 +8,6 @@ export default class GameScene extends Phaser.Scene {
 
 
 	create() {
-		this.scene.start('Battle');
+		this.scene.start('World');
 	}
 };
