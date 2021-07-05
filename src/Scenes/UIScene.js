@@ -1,5 +1,6 @@
 import 'phaser';
 import { HeroesMenu, EnemiesMenu, ActionsMenu } from './Menu/HeroesMenu';
+import Message from './Message';
 export default class UIScene extends Phaser.Scene {
 	constructor() {
 		super('UIScene');
@@ -40,6 +41,8 @@ export default class UIScene extends Phaser.Scene {
 		this.events.on("SelectEnemies", this.onSelectEnemies, this);
 		this.events.on("Enemy", this.onEnemy, this);
 		this.battleScene.nextTurn();
+		this.message = new Message(this, this.battleScene.events);
+		this.add.existing(this.message);
 	}
 	onEnemy(index) {
 		this.heroesMenu.deselect();
@@ -47,7 +50,7 @@ export default class UIScene extends Phaser.Scene {
 		this.enemiesMenu.deselect();
 		this.currentMenu = null;
 		this.battleScene.receivePlayerSelection('attack', index);
-		console.log(this.battleScene.receivePlayerSelection('attack', index))
+
 	}
 	onSelectEnemies() {
 		this.currentMenu = this.enemiesMenu;
