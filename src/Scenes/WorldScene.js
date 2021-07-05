@@ -52,13 +52,15 @@ export default class WorldScene extends Phaser.Scene {
 		});
 		this.physics.add.collider(this.player, obstacles);
 		this.spawns = this.physics.add.group({ classType: Phaser.GameObjects.Zone });
-		for (var i = 0; i < 30; i++) {
-			var x = Phaser.Math.RND.between(0, this.physics.world.bounds.width);
-			var y = Phaser.Math.RND.between(0, this.physics.world.bounds.height);
+		for (let i = 0; i < 30; i++) {
+			let x = Phaser.Math.RND.between(0, this.physics.world.bounds.width);
+			let y = Phaser.Math.RND.between(0, this.physics.world.bounds.height);
 			// parameters are x, y, width, height
 			this.spawns.create(x, y, 20, 20);
 		}
 		this.physics.add.overlap(this.player, this.spawns, this.onMeetEnemy, false, this);
+		const timeEvent = this.time.addEvent({ delay: 2000, callback: this.exitBattle, callbackScope: this });
+		this.sys.events.on('wake', this.wake, this);
 	}
 	update(time, delta) {
 		this.player.body.setVelocity(0);
@@ -106,6 +108,10 @@ export default class WorldScene extends Phaser.Scene {
 	}
 	exitBattle() {
 		this.scene.sleep('UIScene');
-		this.scene.switch('WorldScene');
+		this.scene.switch('World');
+	}
+	wake() {
+		this.scene.run('UIScene');
+		this.time.addEvent({ delay: 2000, callback: this.exitBattle, callbackScope: this });
 	}
 };
