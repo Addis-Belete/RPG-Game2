@@ -89,6 +89,8 @@ export default class PreloaderScene extends Phaser.Scene {
 		this.load.image('tiles', 'assets/map/spritesheet.png');
 		this.load.tilemapTiledJSON('map', 'assets/map/map.json');
 		this.load.spritesheet('player', 'assets/RPG_assets.png', { frameWidth: 16, frameHeight: 16 });
+		this.load.image("dragonblue", "assets/dragonblue.png");
+		this.load.image("dragonorrange", "assets/dragonorrange.png");
 	}
 
 	ready() {
