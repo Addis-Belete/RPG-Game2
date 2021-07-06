@@ -1,3 +1,4 @@
+import 'regenerator-runtime/runtime';
 import 'phaser';
 import config from './Config/config';
 import GameScene from './Scenes/GameScene';
@@ -8,8 +9,9 @@ import OptionsScene from './Scenes/OptionsScene';
 import CreditsScene from './Scenes/CreditsScene';
 import Worldscene from './Scenes/WorldScene.js';
 import BattleScene from './Scenes/BattleScene';
-import Message from './Scenes/Message';
 import UIScene from './Scenes/UIScene';
+import NameInputScene from './Scenes/NameInputScene';
+import HighScoreScene from './Scenes/HighScorescene';
 import Model from './Model';
 
 class Game extends Phaser.Game {
@@ -17,6 +19,8 @@ class Game extends Phaser.Game {
 		super(config);
 		const model = new Model();
 		this.globals = { model, bgMusic: null };
+		this.scene.add('NameInput', NameInputScene);
+		this.scene.add('HighScore', HighScoreScene);
 		this.scene.add('Boot', BootScene);
 		this.scene.add('Preloader', PreloaderScene);
 		this.scene.add('Title', TitleScene);
@@ -26,8 +30,8 @@ class Game extends Phaser.Game {
 		this.scene.add('World', Worldscene);
 		this.scene.add('Battle', BattleScene)
 		this.scene.add("UIScene", UIScene)
-		this.scene.add('Message', Message);
-		this.scene.start('Boot');
+
+		this.scene.start('NameInput');
 	}
 }
 

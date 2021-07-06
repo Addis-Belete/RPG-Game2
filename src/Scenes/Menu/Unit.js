@@ -1,3 +1,4 @@
+import { updatePlayerScore } from "../../Score/Score";
 const Unit = new Phaser.Class({
 	Extends: Phaser.GameObjects.Sprite,
 
@@ -22,6 +23,9 @@ const Unit = new Phaser.Class({
 	},
 	takeDamage: function (damage) {
 		this.hp -= damage;
+		if (this.texture.key !== 'player') {
+			updatePlayerScore(damage);
+		}
 		if (this.hp <= 0) {
 			this.hp = 0;
 			this.menuItem.unitKilled();

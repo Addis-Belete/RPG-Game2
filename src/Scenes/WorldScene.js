@@ -1,5 +1,6 @@
 import 'phaser';
 import { getPlayerScore, updateScoreText } from '../Score/Score';
+import Button from '../Objects/Button';
 export default class WorldScene extends Phaser.Scene {
 	constructor() {
 		super('World');
@@ -28,8 +29,8 @@ export default class WorldScene extends Phaser.Scene {
 			this,
 			740,
 			13,
-			'button',
-			'button',
+			'button1',
+			'button2',
 			'Exit',
 			'HighScoreScene',
 			16,
@@ -125,7 +126,7 @@ export default class WorldScene extends Phaser.Scene {
 		// shake the world
 		this.cameras.main.shake(300);
 
-		this.scene.switch('Battle');
+		this.scene.switch('BattleScene');
 	}
 	exitBattle() {
 		this.scene.sleep('UIScene');
