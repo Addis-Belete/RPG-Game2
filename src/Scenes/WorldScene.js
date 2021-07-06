@@ -61,6 +61,7 @@ export default class WorldScene extends Phaser.Scene {
 		this.physics.add.overlap(this.player, this.spawns, this.onMeetEnemy, false, this);
 		const timeEvent = this.time.addEvent({ delay: 2000, callback: this.exitBattle, callbackScope: this });
 		this.sys.events.on('wake', this.wake, this);
+
 	}
 	update(time, delta) {
 		this.player.body.setVelocity(0);
@@ -111,7 +112,9 @@ export default class WorldScene extends Phaser.Scene {
 		this.scene.switch('World');
 	}
 	wake() {
-		this.scene.run('UIScene');
-		this.time.addEvent({ delay: 2000, callback: this.exitBattle, callbackScope: this });
+		this.cursors.left.reset();
+		this.cursors.right.reset();
+		this.cursors.up.reset();
+		this.cursors.down.reset();
 	}
 };
