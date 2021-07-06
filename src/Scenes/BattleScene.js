@@ -1,12 +1,24 @@
 import 'phaser';
 import { Enemy } from './Menu/Enemy';
 import { PlayerCharacter } from './Menu/PlayerCharacter';
+import { getPlayerScore, updateScoreText } from '../Score/Score';
 export default class BattleScene extends Phaser.Scene {
 	constructor() {
 		super('Battle');
 	}
+	preload() {
+
+
+	}
+
 
 	create() {
+		let scoreText = this.add.text(16, 16, `score: ${getPlayerScore()}`, {
+			fontSize: '16px',
+			fill: '#fff',
+		});
+		updateScoreText(scoreText);
+		this.add.rectangle(410, 300, 400, 350, 0x000000).setAlpha(0.9);
 		// change the background to green
 		this.cameras.main.setBackgroundColor("rgba(0, 200, 0, 0.5)");
 		this.startBattle();
@@ -15,18 +27,26 @@ export default class BattleScene extends Phaser.Scene {
 	}
 	startBattle() {
 		// player character - warrior
-		var warrior = new PlayerCharacter(this, 250, 50, "player", 1, "Warrior", 100, 20);
+		let warrior = new PlayerCharacter(this, 250, 50, "player", 1, "Warrior", 100, 20);
 		this.add.existing(warrior);
+		this.warriorHealthBar = this.makeHealthBar(480, 220, 0x2ecc71);
+		this.setHealthBarValue(this.warriorHealthBar, 100);
 
 		// player character - mage
-		var mage = new PlayerCharacter(this, 250, 100, "player", 4, "Mage", 80, 8);
+		let mage = new PlayerCharacter(this, 250, 100, "player", 4, "Mage", 80, 8);
 		this.add.existing(mage);
+		this.mageHealthBar = this.makeHealthBar(480, 270, 0x2ecc71);
+		this.setHealthBarValue(this.mageHealthBar, 100);
 
-		var dragonblue = new Enemy(this, 50, 50, "dragonblue", null, "Dragon", 50, 3);
+		let dragonblue = new Enemy(this, 50, 50, "dragonblue", null, "Dragon", 50, 3);
 		this.add.existing(dragonblue);
+		this.dragonBlueHealthBar = this.makeHealthBar(260, 220, 0x2ecc71);
+		this.setHealthBarValue(this.dragonBlueHealthBar, 100);
 
-		var dragonOrange = new Enemy(this, 50, 100, "dragonorrange", null, "Dragon2", 50, 3);
+		let dragonOrange = new Enemy(this, 50, 100, "dragonorrange", null, "Dragon2", 50, 3);
 		this.add.existing(dragonOrange);
+		this.dragonOrangeHealthBar = this.makeHealthBar(260, 270, 0x2ecc71);
+		this.setHealthBarValue(this.dragonOrangeHealthBar, 100);
 
 		// array with heroes
 		this.heroes = [warrior, mage];
@@ -46,6 +66,10 @@ export default class BattleScene extends Phaser.Scene {
 			return;
 		}
 		do {
+			this.setHealthBarValue(this.warriorHealthBar, warrior.hp);
+			this.setHealthBarValue(this.mageHealthBar, mage.hp);
+			this.setHealthBarValue(this.dragonBlueHealthBar, dragonBlue.hp);
+			this.setHealthBarValue(this.dragonOrangeHealthBar, dragonOrange.hp);
 			// currently active unit
 			this.index++;
 			// if there are no more units, we start again from the first one
@@ -59,7 +83,7 @@ export default class BattleScene extends Phaser.Scene {
 			this.events.emit("PlayerSelect", this.index);
 		} else { // else if its enemy unit
 			// pick random living hero to be attacked
-			var r;
+			let r;
 			do {
 				r = Math.floor(Math.random() * this.heroes.length);
 			} while (!this.heroes[r].living)
@@ -71,15 +95,15 @@ export default class BattleScene extends Phaser.Scene {
 	}
 	// check for game over or victory
 	checkEndBattle() {
-		var victory = true;
+		let victory = true;
 		// if all enemies are dead we have victory
-		for (var i = 0; i < this.enemies.length; i++) {
+		for (let i = 0; i < this.enemies.length; i++) {
 			if (this.enemies[i].living)
 				victory = false;
 		}
-		var gameOver = true;
+		let gameOver = true;
 		// if all heroes are dead we have game over
-		for (var i = 0; i < this.heroes.length; i++) {
+		for (let i = 0; i < this.heroes.length; i++) {
 			if (this.heroes[i].living)
 				gameOver = false;
 		}
@@ -97,7 +121,7 @@ export default class BattleScene extends Phaser.Scene {
 		// clear state, remove sprites
 		this.heroes.length = 0;
 		this.enemies.length = 0;
-		for (var i = 0; i < this.units.length; i++) {
+		for (let i = 0; i < this.units.length; i++) {
 			// link item
 			this.units[i].destroy();
 		}
@@ -107,4 +131,25 @@ export default class BattleScene extends Phaser.Scene {
 		// return to WorldScene and sleep current BattleScene
 		this.scene.switch('WorldScene');
 	}
+	makeHealthBar(x, y, color) {
+		// draw the bar
+		const bar = this.add.graphics();
+
+		// color the bar
+		bar.fillStyle(color, 1);
+
+		// fill the bar with a rectangle
+		bar.fillRect(0, 0, 100, 10);
+
+		// position the bar
+		bar.x = x;
+		bar.y = y;
+
+		// return the bar
+		return bar;
+	}
+	setHealthBarValue(bar, percentage) {
+		// scale the bar
+		bar.scaleX = percentage / 100;
+	},
 }
