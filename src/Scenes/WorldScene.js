@@ -14,7 +14,9 @@ export default class WorldScene extends Phaser.Scene {
 		const map = this.make.tilemap({ key: 'map' });
 		const tiles = map.addTilesetImage('spritesheet', 'tiles');
 
-		map.createStaticLayer('Grass', tiles, 0, 0);
+		const grass = map.createStaticLayer('Grass', tiles, map.widthInPixels, map.heightInPixels);
+
+		grass.fixedToCamera = false;
 		const obstacles = map.createStaticLayer('Obstacles', tiles, 0, 0);
 		obstacles.setCollisionByExclusion([-1]);
 		this.add.rectangle(20, 10, 1600, 35, 0x000000).setAlpha(1);
@@ -29,8 +31,8 @@ export default class WorldScene extends Phaser.Scene {
 			this,
 			740,
 			13,
-			'button1',
-			'button2',
+			'blueButton1',
+			'blueButton2',
 			'Exit',
 			'HighScoreScene',
 			16,
