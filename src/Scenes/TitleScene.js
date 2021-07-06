@@ -8,6 +8,8 @@ export default class TitleScene extends Phaser.Scene {
 	}
 
 	create() {
+		this.add.rectangle(400, 300, 250, 550, 0x000000).setAlpha(0.75);
+		this.add.image(265, 30, 'logo').setOrigin(0).setScale(0.5);
 		// Game
 
 		this.gameButton = new Button(this, config.width / 2, config.height / 2 - 100, 'blueButton1', 'blueButton2', 'Play', 'Game');
@@ -17,7 +19,15 @@ export default class TitleScene extends Phaser.Scene {
 
 		// Credits
 		this.creditsButton = new Button(this, config.width / 2, config.height / 2 + 100, 'blueButton1', 'blueButton2', 'Credits', 'Credits');
-
+		this.highScoreButton = new Button(
+			this,
+			config.width / 2,
+			config.height / 2 + 100,
+			'blueButton1',
+			'blueButton2',
+			'HighScores',
+			'HighScoreScene',
+		);
 		this.model = this.sys.game.globals.model;
 		if (this.model.musicOn === true && this.model.bgMusicPlaying === false) {
 			this.bgMusic = this.sound.add('bgMusic', { volume: 0.5, loop: true });

@@ -83,7 +83,7 @@ export default class WorldScene extends Phaser.Scene {
 		this.sys.events.on('wake', this.wake, this);
 
 	}
-	update(time, delta) {
+	update() {
 		this.player.body.setVelocity(0);
 
 		// Horizontal movement
