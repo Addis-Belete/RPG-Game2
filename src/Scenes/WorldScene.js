@@ -1,4 +1,5 @@
 import 'phaser';
+import { getPlayerScore, updateScoreText } from '../Score/Score';
 export default class WorldScene extends Phaser.Scene {
 	constructor() {
 		super('World');
@@ -12,9 +13,28 @@ export default class WorldScene extends Phaser.Scene {
 		const map = this.make.tilemap({ key: 'map' });
 		const tiles = map.addTilesetImage('spritesheet', 'tiles');
 
-		const grass = map.createStaticLayer('Grass', tiles, 0, 0);
+		map.createStaticLayer('Grass', tiles, 0, 0);
 		const obstacles = map.createStaticLayer('Obstacles', tiles, 0, 0);
 		obstacles.setCollisionByExclusion([-1]);
+		this.add.rectangle(20, 10, 1600, 35, 0x000000).setAlpha(1);
+		// Display Score
+		let scoreText = this.add.text(16, 5, `score: ${getPlayerScore()}`, {
+			fontSize: '16px',
+			fill: '#fff',
+		});
+		updateScoreText(scoreText);
+		// Exit Game Button
+		this.exitGameButton = new Button(
+			this,
+			740,
+			13,
+			'button',
+			'button',
+			'Exit',
+			'HighScoreScene',
+			16,
+		);
+
 		this.player = this.physics.add.sprite(50, 100, 'player', 6);
 		this.physics.world.bounds.width = map.widthInPixels;
 		this.physics.world.bounds.height = map.heightInPixels;
