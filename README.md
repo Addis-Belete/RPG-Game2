@@ -28,7 +28,7 @@
 
 ## Live Demo
 
-[Live Demo Link](https://deploy-preview-1--amazing-bartik-648d08.netlify.app/)
+[Live Demo Link](https://relaxed-villani-50acf7.netlify.app/)
 
 ## Getting Started
 
