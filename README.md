@@ -19,6 +19,10 @@
 - Once you kill the enemy the game automatically switch to world scene.
 - Meet another enemy to continue the game or click the exit button to exit from the game and click Highscore button to see your score.
 
+## Game Design
+
+This is a turn-based role-playing game(RPG). In the game there are two main characters: A warrior and A mage, they travel the world and fight dragons. To navigate in the world scene, the player uses keyboard arrows up, down, left, right. In the battle scene, use keyboard arrows up, down, left, and space bar to attack the chosen enemy. Inside the battle, the scene player can see his characters' and enemies' health bars at all times. Also there are player's score available to see in the top bar in both of the scenes, when player want to quit, he can use the button 'Exit' in the top right of the bar, after clicking said button player is taken to High Score scene, where all top players and their scores are listed.
+
 ## Built With
 
 - Javascript
