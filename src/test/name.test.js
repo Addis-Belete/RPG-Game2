@@ -11,8 +11,3 @@ test("If name input field is empty name should be 'Guest'", () => {
 test('Player name must be a string', () => {
 	expect(typeof getPlayerName()).toBe('string');
 });
-
-test('Successfully set player name', () => {
-	setPlayerName('Addis');
-	expect(getPlayerName()).toBe('Addis');
-});
