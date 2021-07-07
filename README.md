@@ -4,10 +4,10 @@
 
 > An RPG game built using the Phaser 3 Framework for the JavaScript capstone project.
 
-![screenshot](assets/readmeAsset/name.png)
-![screenshot](assets/readmeAsset/buttons.png)
-![screenshot](assets/readmeAsset/world.png)
-![screenshot](assets/readmeAsset/battle.png)
+![screenshot](readmeAsset/battle.png)
+![screenshot](readmeAsset/buttons.png)
+![screenshot](readmeAsset/world.png)
+![screenshot](readmeAsset/battle.png)
 
 # Game Instructions
 
