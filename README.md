@@ -62,7 +62,7 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-- Hat tip to anyone whose code was used
+- Hat tip to Zil Norvils
 - Inspiration
 - etc
 
