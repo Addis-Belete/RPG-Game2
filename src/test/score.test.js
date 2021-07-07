@@ -1,14 +1,14 @@
 import { updatePlayerScore, getPlayerScore } from '../Score/Score';
 
 test('Player score must be an integer', () => {
-	expect(typeof getPlayerScore()).toBe('number');
+  expect(typeof getPlayerScore()).toBe('number');
 });
 
 test('Default player score should be 0', () => {
-	expect(getPlayerScore()).toBe(0);
+  expect(getPlayerScore()).toBe(0);
 });
 
 test('Successfully update player score', () => {
-	updatePlayerScore(100);
-	expect(getPlayerScore()).toBe(100);
+  updatePlayerScore(100);
+  expect(getPlayerScore()).toBe(100);
 });
