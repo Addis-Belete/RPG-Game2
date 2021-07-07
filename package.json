@@ -2,11 +2,11 @@
   "name": "rpg-game",
   "version": "1.1.2",
   "description": "a simple RPG game",
-  "main": "src/index.js",
+  "private": true,
   "scripts": {
     "test": "jest",
-    "build": "webpack --config webpack/prod.js ",
-    "start": "webpack-dev-server --config webpack/base.js --open"
+   "build": "webpack"
+
   },
   "repository": {
     "type": "git",
