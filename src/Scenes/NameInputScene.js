@@ -12,7 +12,7 @@ export default class NameInputScene extends Phaser.Scene {
 
 	create() {
 		this.nameInput = this.add.dom(400, 320).createFromCache('form');
-
+		this.cameras.main.setBackgroundColor("rgba(0, 200, 0, 0.5)");
 		this.message = this.add
 			.text(400, 250, 'Input Your Name & Hit ENTER', {
 				color: '#FFFFFF',
