@@ -14,9 +14,9 @@ export default class WorldScene extends Phaser.Scene {
 		const map = this.make.tilemap({ key: 'map' });
 		const tiles = map.addTilesetImage('spritesheet', 'tiles');
 
-		const grass = map.createStaticLayer('Grass', tiles, map.widthInPixels, map.heightInPixels);
+		const grass = map.createStaticLayer('Grass', tiles, 0, 0);
+		this.cameras.main.setBackgroundColor("rgba(0, 200, 0, 0.5)");
 
-		grass.fixedToCamera = false;
 		const obstacles = map.createStaticLayer('Obstacles', tiles, 0, 0);
 		obstacles.setCollisionByExclusion([-1]);
 		this.add.rectangle(20, 10, 1600, 35, 0x000000).setAlpha(1);
@@ -38,7 +38,7 @@ export default class WorldScene extends Phaser.Scene {
 			16,
 		);
 
-		this.player = this.physics.add.sprite(50, 100, 'player', 6);
+		this.player = this.physics.add.sprite(70, 50, 'player', 6);
 		this.physics.world.bounds.width = map.widthInPixels;
 		this.physics.world.bounds.height = map.heightInPixels;
 		this.player.setCollideWorldBounds(true);
