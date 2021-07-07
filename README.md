@@ -28,7 +28,7 @@
 
 ## Live Demo
 
-[Live Demo Link](https://relaxed-villani-50acf7.netlify.app/)
+[Live Demo Link](https://addis0943.github.io/RPG-Game2/)
 
 ## Getting Started
 
