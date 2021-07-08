@@ -45,7 +45,7 @@ If you want to repack the file
 
 - Run `npm install` on the terminal to install dependancies
 - Run `npx run bundle`
-- Open `index.hmtl ` with live server
+- Open `index.html ` with live server
 
 If you want to test the code
 
