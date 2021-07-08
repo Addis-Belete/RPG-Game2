@@ -32,7 +32,7 @@ This is a turn-based role-playing game(RPG). In the game there are two main char
 
 ## Live Demo
 
-[Live Demo Link](https://addis0943.github.io/RPG-Game2/)
+[Live Demo Link](https://festive-shockley-a06460.netlify.app/)
 
 ## Getting Started
 
