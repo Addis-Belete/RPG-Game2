@@ -1,49 +1,80 @@
-# Phaser 3 Webpack Project Template
+![](https://img.shields.io/badge/Microverse-blueviolet)
 
-A Phaser 3 project template with ES6 support via [Babel 7](https://babeljs.io/) and [Webpack 4](https://webpack.js.org/) that includes hot-reloading for development and production-ready builds.
+# RPG-GAME
 
-This has been updated for Phaser 3.50.0 version and above.
+> An RPG game built using the Phaser 3 Framework for the JavaScript capstone project.
 
-Loading images via JavaScript module `import` is also supported, although not recommended.
+![screenshot](readmeAsset/name.png)
+![screenshot](readmeAsset/buttons.png)
+![screenshot](readmeAsset/world.png)
+![screenshot](readmeAsset/battle.png)
 
-## Requirements
+# Game Instructions
 
-[Node.js](https://nodejs.org) is required to install dependencies and run scripts via `npm`.
+- Fill your Name and hit Enter
+- Click Play Button
+- Use Arrow key to move to any direction
+- Once you meet the enemy on map the game automatically switch to battle scene.
+- Use tab (or space) to kill the enemy on battle scene.
+- Once you kill the enemy the game automatically switch to world scene.
+- Meet another enemy to continue the game or click the exit button to exit from the game and click Highscore button to see your score.
 
-## Available Commands
+## Game Design
 
-| Command | Description |
-|---------|-------------|
-| `npm install` | Install project dependencies |
-| `npm start` | Build project and open web server running project |
-| `npm run build` | Builds code bundle with production settings (minification, uglification, etc..) |
+This is a turn-based role-playing game(RPG). In the game there are two main characters: A warrior and A mage, they travel the world and fight dragons. To navigate in the world scene, the player uses keyboard arrows up, down, left, right. In the battle scene, use keyboard arrows up, down, left, and space bar to attack the chosen enemy. Inside the battle, the scene player can see his characters' and enemies' health bars at all times. Also there are player's score available to see in the top bar in both of the scenes, when player want to quit, he can use the button 'Exit' in the top right of the bar, after clicking said button player is taken to High Score scene, where all top players and their scores are listed.
 
-## Writing Code
+## Built With
 
-After cloning the repo, run `npm install` from your project directory. Then, you can start the local development server by running `npm start`.
+- Javascript
+- HTML5
+- Phaser 3
+- Webpack
 
-After starting the development server with `npm start`, you can edit any files in the `src` folder and webpack will automatically recompile and reload your server (available at `http://localhost:8080` by default).
+## Live Demo
 
-## Customizing the Template
+[Live Demo Link](https://festive-shockley-a06460.netlify.app/)
 
-### Babel
+## Getting Started
 
-You can write modern ES6+ JavaScript and Babel will transpile it to a version of JavaScript that you want your project to support. The targeted browsers are set in the `.babelrc` file and the default currently targets all browsers with total usage over "0.25%" but excludes IE11 and Opera Mini.
+To set up a local copy of the project
 
- ```
-"browsers": [
-  ">0.25%",
-  "not ie 11",
-  "not op_mini all"
-]
- ```
+- `git clone git@github.com:Addis0943/RPG-Game2.git`
+- `cd RPG-Game2`
 
-### Webpack
+If you want to repack the file
 
-If you want to customize your build, such as adding a new webpack loader or plugin (i.e. for loading CSS or fonts), you can modify the `webpack/base.js` file for cross-project changes, or you can modify and/or create new configuration files and target them in specific npm tasks inside of `package.json'.
+- Run `npm install` on the terminal to install dependancies
+- Run `npx run bundle`
+- Open `index.html ` with live server
 
-## Deploying Code
+If you want to test the code
 
-After you run the `npm run build` command, your code will be built into a single bundle located at `dist/bundle.min.js` along with any other assets you project depended. 
+- Run `npm run test`
 
-If you put the contents of the `dist` folder in a publicly-accessible location (say something like `http://mycoolserver.com`), you should be able to open `http://mycoolserver.com/index.html` and play your game.
+## Author
+
+👤 **Addis Belete**
+
+- GitHub: [@Addis0943](https://github.com/Addis0943)
+- Twitter: [@Addis32018084](https://twitter.com/Addis32018084)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/addis-belete-134b98191/)
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome!
+
+Feel free to check the [issues page](../../issues/).
+
+## Show your support
+
+Give a ⭐️ if you like this project!
+
+## Acknowledgments
+
+- Hat tip to Zil Norvils
+- Inspiration
+- etc
+
+## 📝 License
+
+This project is [MIT](./MIT.md) licensed.

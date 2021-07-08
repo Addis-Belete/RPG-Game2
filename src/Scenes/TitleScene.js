@@ -1,50 +1,55 @@
-import 'phaser';
+/* eslint-disable class-methods-use-this, import/no-extraneous-dependencies */
+import Phaser from 'phaser';
 import config from '../Config/config';
 import Button from '../Objects/Button';
+
 export default class TitleScene extends Phaser.Scene {
-	constructor() {
-		super('Title');
-	}
-	preload() {
-		this.load.image('blueButton1', 'assets/ui/blue_button02.png');
-		this.load.image('blueButton2', 'assets/ui/blue_button03.png');
-		this.load.image('phaserLogo', 'assets/logo.png');
-		this.load.image('box', 'assets/ui/grey_box.png');
-		this.load.image('checkedBox', 'assets/ui/blue_boxCheckmark.png');
-		this.load.audio('bgMusic', ['assets/TownTheme.mp3']);
+  constructor() {
+    super('Title');
+  }
 
-	}
+  create() {
+    this.add.rectangle(400, 300, 250, 550, 0x000000).setAlpha(0.75);
 
-	create() {
-		// Game
-		this.gameButton = new Button(this, config.width / 2, config.height / 2 - 100, 'blueButton1', 'blueButton2', 'Play', 'Game');
+    // Game
 
-		// Options
-		this.optionsButton = new Button(this, config.width / 2, config.height / 2, 'blueButton1', 'blueButton2', 'Options', 'Options');
+    this.gameButton = new Button(this, config.width / 2, config.height / 2 - 100, 'blueButton1', 'blueButton2', 'Play', 'Game');
 
-		// Credits
-		this.creditsButton = new Button(this, config.width / 2, config.height / 2 + 100, 'blueButton1', 'blueButton2', 'Credits', 'Credits');
+    // Options
+    this.optionsButton = new Button(this, config.width / 2, config.height / 2, 'blueButton1', 'blueButton2', 'Options', 'Options');
 
-		this.model = this.sys.game.globals.model;
-		if (this.model.musicOn === true && this.model.bgMusicPlaying === false) {
-			this.bgMusic = this.sound.add('bgMusic', { volume: 0.5, loop: true });
-			this.bgMusic.play();
-			this.model.bgMusicPlaying = true;
-			this.sys.game.globals.bgMusic = this.bgMusic;
-		}
-	}
+    // Credits
+    this.creditsButton = new Button(this, config.width / 2, config.height / 2 + 100, 'blueButton1', 'blueButton2', 'Credits', 'Credits');
+    this.highScoreButton = new Button(
+      this,
+      config.width / 2,
+      config.height / 2 + 100,
+      'blueButton1',
+      'blueButton2',
+      'HighScores',
+      'HighScoreScene',
+    );
+    this.model = this.sys.game.globals.model;
+    if (this.model.musicOn === true && this.model.bgMusicPlaying === false) {
+      this.bgMusic = this.sound.add('bgMusic', { volume: 0.5, loop: true });
+      this.bgMusic.play();
+      this.model.bgMusicPlaying = true;
+      this.sys.game.globals.bgMusic = this.bgMusic;
+    }
+  }
 
-	centerButton(gameObject, offset = 0) {
-		Phaser.Display.Align.In.Center(
-			gameObject,
-			this.add.zone(config.width / 2, config.height / 2 - offset * 100, config.width, config.height)
-		);
-	}
+  centerButton(gameObject, offset = 0) {
+    Phaser.Display.Align.In.Center(
+      gameObject,
+      this.add.zone(config.width / 2, config.height / 2 - offset * 100,
+        config.width, config.height),
+    );
+  }
 
-	centerButtonText(gameText, gameButton) {
-		Phaser.Display.Align.In.Center(
-			gameText,
-			gameButton
-		);
-	}
-};
+  centerButtonText(gameText, gameButton) {
+    Phaser.Display.Align.In.Center(
+      gameText,
+      gameButton,
+    );
+  }
+}
