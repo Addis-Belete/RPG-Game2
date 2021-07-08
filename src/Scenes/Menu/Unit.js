@@ -1,4 +1,5 @@
-/* eslint-disable no-multi-assign, import/prefer-default-export */
+/* eslint-disable no-multi-assign, import/prefer-default-export,
+import/no-extraneous-dependencies  */
 import Phaser from 'phaser';
 import { updatePlayerScore } from '../../Score/Score';
 

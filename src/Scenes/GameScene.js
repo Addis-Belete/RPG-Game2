@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import Phaser from 'phaser';
 
 export default class GameScene extends Phaser.Scene {

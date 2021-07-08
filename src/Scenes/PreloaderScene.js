@@ -1,4 +1,4 @@
-/* eslint-disable radix */
+/* eslint-disable radix, import/no-extraneous-dependencies */
 
 import Phaser from 'phaser';
 

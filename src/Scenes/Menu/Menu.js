@@ -1,4 +1,5 @@
-/* eslint-disable import/prefer-default-export */
+/* eslint-disable import/prefer-default-export,
+import/no-extraneous-dependencies  */
 import Phaser from 'phaser';
 import { MenuItem } from './MenuItem';
 

@@ -1,4 +1,4 @@
-/* eslint-disable no-undef, no-empty */
+/* eslint-disable no-undef, no-empty, import/no-extraneous-dependencies */
 import 'phaser';
 import { HeroesMenu, EnemiesMenu, ActionsMenu } from './Menu/HeroesMenu';
 import Message from './Message';

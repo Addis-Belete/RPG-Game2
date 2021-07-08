@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import Phaser from 'phaser';
 
 const Message = new Phaser.Class({
