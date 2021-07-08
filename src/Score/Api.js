@@ -10,7 +10,7 @@ const sortData = (object) => {
 };
 
 const submitHighScore = async (
-	gameId = 'sE9vcMfTu6omIF4NoCp3',
+	gameId = 'U7j7o8MocFkvuE4OwhWl',
 	name,
 	score,
 ) => {
@@ -36,7 +36,7 @@ const submitHighScore = async (
 	}
 };
 
-const getHighScores = async (gameId = 'sE9vcMfTu6omIF4NoCp3') => {
+const getHighScores = async (gameId = 'U7j7o8MocFkvuE4OwhWl') => {
 	const url = `https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/${gameId}/scores/`;
 	try {
 		const response = await fetch(url, {
