@@ -44,7 +44,12 @@ To set up a local copy of the project
 If you want to repack the file
 
 - Run `npm install` on the terminal to install dependancies
-- Run `npx start` to run the game locally
+- Run `npx run bundle`
+- Open `index.hmtl ` with live server
+
+If you want to test the code
+
+- Run `npm run test`
 
 ## Author
 
